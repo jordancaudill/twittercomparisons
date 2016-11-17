@@ -16,6 +16,7 @@ body {
     margin-top:20%; /* Don't copy this */
 }
 .stylish-input-group .input-group-addon{
+    padding-bottom: 5px;
     background: white !important; 
 }
 .stylish-input-group .form-control{
