@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html ng-app="twitter">
+    <head lang="en">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Jordan Caudill">
+
+        <title>Presidential Candidate Twitter</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style/index.css">
+        <link href="https://fonts.googleapis.com/css?family=Hind:400,600,700" rel="stylesheet">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="img/favicons/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+
+    </head>
+    <body ng-controller="SearchController as Ctrl">
+        <h1 id="teamstatter">Twitter Comparisons</h1>
+        <p id="slogan">Compare up to four Twitter accounts, or <a href="https://github.com/jordancaudill/twittercomparisons" target="blank"> get the source code</a> and explore!</p>
+        <p class="small-slogan">A project by <a href="http://jordancaudill.com" target="blank">Jordan Caudill</a></p>
+        <div class="container">
+            <div class="row">
+                <form ng-submit="Ctrl.search(1)"  class="col-xs-3">
+                    <div id="imaginary_container"> 
+                        <div class="input-group stylish-input-group">
+                            <input type="text" class="form-control" ng-model="user1.handle"  placeholder="@TwitterUser" >
+                            <span class="input-group-addon">
+                                <button type="submit">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>  
+                            </span>
+                        </div>
+                    </div>
+                    <br>
+                    <div ng-if="user1.searching" class="loader"></div>
+                    <div ng-if="user1.searched === true">
+                        <a class="twitter-timeline" href="{{user1.link}}">Tweets by {{user.handle}}</a>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </div>
+                </form>
+                <form ng-submit="Ctrl.search(2)"  class="col-xs-3">
+                    <div id="imaginary_container"> 
+                        <div class="input-group stylish-input-group">
+                            <input type="text" class="form-control" ng-model="user2.handle"  placeholder="@TwitterUser" >
+                            <span class="input-group-addon">
+                                <button type="submit">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>  
+                            </span>
+                        </div>
+                    </div>
+                    <br>
+                    <div ng-if="user2.searching" class="loader"></div>
+                    <div ng-if="user2.searched === true">
+                        <a class="twitter-timeline" href="{{user2.link}}">Tweets by {{user.handle}}</a>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </div>
+                </form>
+                <form ng-submit="Ctrl.search(3)" class="col-xs-3">
+                    <div id="imaginary_container"> 
+                        <div class="input-group stylish-input-group">
+                            <input type="text" class="form-control" ng-model="user3.handle"  placeholder="@TwitterUser" >
+                            <span class="input-group-addon">
+                                <button type="submit">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>  
+                            </span>
+                        </div>
+                    </div>
+                    <br>
+                    <div ng-if="user3.searching" class="loader"></div>
+                    <div ng-if="user3.searched === true">
+                        <a class="twitter-timeline" href="{{user3.link}}">Tweets by {{user.handle}}</a>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </div>
+                </form>
+                <form ng-submit="Ctrl.search(4)" class="col-xs-3">
+                    <div id="imaginary_container"> 
+                        <div class="input-group stylish-input-group">
+                            <input type="text" class="form-control" ng-model="user4.handle"  placeholder="@TwitterUser" >
+                            <span class="input-group-addon">
+                                <button type="submit">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>  
+                            </span>
+                        </div>
+                    </div>
+                    <br>
+                    <div ng-if="user4.searching" class="loader"></div>
+                    <div ng-if="user4.searched === true">
+                        <a class="twitter-timeline" href="{{user4.link}}">Tweets by {{user.handle}}</a>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script>
+            (function(angular) {
+                var app = angular.module('twitter', []);
+                app.controller('SearchController', ['$scope', '$timeout', function($scope, $timeout){
+                    for (var x = 1; x <= 4; x++) {
+                        $scope['user' + x] = {
+                            handle: '',
+                            link: ''
+                        }
+                    }
+                    this.search = function(userNum) {
+                        $scope['user' + userNum].searched = false
+                        $scope['user' + userNum].searching = false;
+
+                        $timeout(function(){
+                            $scope['user' + userNum].searching = true;
+                            var wHandle;
+                            if ($scope['user' + userNum].handle.indexOf('@') == 0) {
+                                wHandle = $scope['user' + userNum].handle.slice(1, $scope['user' + userNum].handle.length);
+                            } else {
+                                wHandle = $scope['user' + userNum].handle;
+                            }
+                            $scope['user' + userNum].link = 'https://twitter.com/' + wHandle;
+                            $scope['user' + userNum].searched = true;
+                            $scope['user' + userNum].searching = false;
+
+                        }, 500);
+
+
+                    };
+                }]);
+
+            }(angular));
+        </script>
+    </body>
+</html>

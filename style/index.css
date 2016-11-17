@@ -1,0 +1,111 @@
+/* Colors */
+/* Fonts */
+body {
+  background-color: #75afff;
+}
+.container {
+  background-color: #add7ff;
+  border-radius: 10px;
+  padding-bottom: 10px;
+}
+
+.bold{
+  font-weight: bold;
+}
+#imaginary_container{
+    margin-top:20%; /* Don't copy this */
+}
+.stylish-input-group .input-group-addon{
+    background: white !important; 
+}
+.stylish-input-group .form-control{
+	border-right:0; 
+	box-shadow:0 0 0; 
+	border-color:#ccc;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}
+
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#teamstatter {
+  margin-top: 50px;
+  color: black;
+  font-size: 3em;
+  font-family: 'Hind', sans-serif;
+  font-weight: 700;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  #teamstatter {
+    font-size: 5em;
+    margin-top: 100px;
+  }
+}
+#slogan {
+  color: black;
+  font-family: 'Hind', sans-serif;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1em;
+  margin-bottom: 20px;
+}
+@media (min-width: 768px) {
+  #slogan {
+    font-size: 1.5em;
+  }
+}
+
+.small-slogan {
+  font-family: 'Hind', sans-serif;
+  font-weight: 400;
+  text-align: center;
+
+}
+.col-xs-15,
+.col-sm-15,
+.col-md-15,
+.col-lg-15 {
+  position: relative;
+  min-height: 1px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.col-xs-15 {
+  width: 20%;
+  float: left;
+}
+@media (min-width: 768px) {
+  .col-sm-15 {
+    width: 20%;
+    float: left;
+  }
+}
+@media (min-width: 992px) {
+  .col-md-15 {
+    width: 20%;
+    float: left;
+  }
+}
+@media (min-width: 1200px) {
+  .col-lg-15 {
+    width: 20%;
+    float: left;
+  }
+}
